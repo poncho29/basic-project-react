@@ -1,18 +1,17 @@
+import { useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 
-export const ProtectedRoute = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { children } = props;
-
+export const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
-  if (!isAuthenticated) return navigate('/');
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
-  console.log('is authenticated')
-
-  return (
-    <>{children}</>
-  )
-}
+  return <>{children}</>;
+};

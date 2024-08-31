@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
 
+import { Navabr } from '../../components';
+
 import style from './root-layout.module.css';
 
 export const RootLayout = () => {
   return (
     <main className={style.rootLayout}>
-      <nav className={style.nav}>
-        <h2>Logo</h2>
-      </nav>
+      <Navabr />
 
       <div className={style.content}>
         <Outlet />

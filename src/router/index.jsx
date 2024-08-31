@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RootLayout } from '../layout/RootLayout';
 
 import { DetailGamePage, HomePage, NotFoundPage, ProfilePage } from '../pages';
+import { Login } from '../components';
 
 export const Router = () => {
   return (
@@ -11,6 +12,7 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<HomePage />} />
+          <Route path="login" element={<Login />} />
           <Route path="detail/:id" element={<DetailGamePage />} />
 
           {/* Private Routes */}
