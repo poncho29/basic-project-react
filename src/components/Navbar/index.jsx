@@ -4,8 +4,6 @@ import { navbarLinks } from '../../assets';
 
 import styles from './navbar.module.css';
 
-
-
 export const Navabr = () => {
   return (
     <header className={styles.header}>
