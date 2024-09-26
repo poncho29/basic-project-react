@@ -1,26 +1,33 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RootLayout } from "../layout/RootLayout";
 
-import { RootLayout } from '../layout/RootLayout';
-
-import { DetailGamePage, HomePage, NotFoundPage, ProfilePage } from '../pages';
-import { Login } from '../components';
+import {
+  LoginPage,
+  DetailGamePage,
+  HomePage,
+  NotFoundPage,
+  ProfilePage,
+} from "../pages";
 
 export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RootLayout />}>
+        <Route path='/' element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="login" element={<Login />} />
-          <Route path="detail/:id" element={<DetailGamePage />} />
 
-          {/* Private Routes */}
-          <Route path="profile" element={<ProfilePage />} />
+          {/* Auth routes */}
+          <Route path='auth/login' element={<LoginPage />} />
+
+          <Route path='detail/:id' element={<DetailGamePage />} />
+
+          {/* Profile routes */}
+          <Route path='profile' element={<ProfilePage />} />
         </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};

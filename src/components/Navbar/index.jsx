@@ -1,10 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-import { navbarLinks } from '../../assets';
+import { useAuth } from "../../hooks";
 
-import styles from './navbar.module.css';
+import { navbarLinks } from "../../assets";
 
-export const Navabr = () => {
+import styles from "./navbar.module.css";
+
+export const Navbar = () => {
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    logout();
+  };
+
   return (
     <header className={styles.header}>
       <h1>Navbar</h1>
@@ -14,12 +23,23 @@ export const Navabr = () => {
           <NavLink
             key={path}
             to={path}
-            className={({ isActive }) => isActive ? styles.linkActive : ''}
+            className={({ isActive }) => (isActive ? styles.linkActive : "")}
           >
             {name}
           </NavLink>
         ))}
+
+        {isAuthenticated ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <NavLink
+            to={"/auth/login"}
+            className={({ isActive }) => (isActive ? styles.linkActive : "")}
+          >
+            Login
+          </NavLink>
+        )}
       </nav>
     </header>
-  )
-}
+  );
+};

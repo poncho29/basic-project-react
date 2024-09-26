@@ -1,17 +1,20 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-import { Navabr } from '../../components';
+import { ProtectedRoute } from "../../router/ProtectedRoute";
+import { Navbar } from "../../components";
 
-import style from './root-layout.module.css';
+import style from "./root-layout.module.css";
 
 export const RootLayout = () => {
   return (
     <main className={style.rootLayout}>
-      <Navabr />
+      <ProtectedRoute>
+        <Navbar />
 
-      <div className={style.content}>
-        <Outlet />
-      </div>
+        <div className={style.content}>
+          <Outlet />
+        </div>
+      </ProtectedRoute>
     </main>
-  )
-}
+  );
+};

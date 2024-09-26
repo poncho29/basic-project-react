@@ -1,11 +1,14 @@
-import { ProtectedRoute } from '../../router/ProtectedRoute';
-
-import styles from './profile.module.css';
+import { useNavigate } from "react-router-dom";
+import styles from "./profile.module.css";
 
 export const ProfilePage = () => {
+  const navigate = useNavigate();
+
   return (
-    <ProtectedRoute>
-      <div className={styles.profile}>Profile Page</div>
-    </ProtectedRoute>
-  )
-}
+    <div className={styles.profile}>
+      <h1>Profile Page</h1>
+
+      <button onClick={() => navigate("/auth/login")}>login</button>
+    </div>
+  );
+};

@@ -14,3 +14,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.loading-protection {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
